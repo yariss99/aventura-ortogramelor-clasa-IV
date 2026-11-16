@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#183b56">
+<meta name="description" content="Aventura ortogramelor – fișă interactivă pentru elevii clasei a IV-a. Învață ortogramele prin joc, exerciții interactive și descoperire!">
+
+<!-- Open Graph: previzualizare pentru Facebook, WhatsApp și alte platforme -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aventura ortogramelor – Clasa a IV-a | CRED ÎN EDUCAȚIE">
+<meta property="og:description" content="Învață ortogramele prin joc, exerciții interactive și descoperire! O aventură educațională pentru elevii clasei a IV-a.">
+<!-- Înlocuiește adresa de mai jos cu URL-ul public al imaginii de prezentare (recomandat 1200 × 630 px). -->
+<meta property="og:image" content="https://ADRESA-IMAGINII-TA.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Înlocuiește cu adresa finală a fișei după publicarea online. -->
+<meta property="og:url" content="https://ADRESA-FISEI-TA/">
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aventura ortogramelor – Clasa a IV-a | CRED ÎN EDUCAȚIE">
+<meta name="twitter:description" content="Învață ortogramele prin joc, exerciții interactive și descoperire!">
+<meta name="twitter:image" content="https://ADRESA-IMAGINII-TA.png">
+<meta name="author" content="CRED ÎN EDUCAȚIE">
+<title>Aventura ortogramelor – clasa a IV-a | CRED ÎN EDUCAȚIE</title>
+<style>
+:root{
+ --navy:#183b56;--blue:#276678;--teal:#3b8c88;--gold:#f2b84b;--cream:#fffaf0;
+ --paper:#ffffff;--ink:#243746;--muted:#647786;--line:#dce6e8;
+ --good:#247a52;--goodbg:#e8f5ed;--bad:#b54444;--badbg:#fff0ee;
+ --shadow:0 12px 32px rgba(24,59,86,.10);--radius:20px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#edf5f4 0,#f7f9f8 420px,#f7f9f8 100%);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.55}
+button,select{font:inherit}
+button{cursor:pointer}
+.topbar{background:var(--navy);color:white;padding:15px 22px}
+.top-inner{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-weight:800;letter-spacing:.12em;font-size:.82rem}
+.brand span{color:var(--gold)}
+.top-note{font-size:.85rem;opacity:.88}
+.hero{max-width:1120px;margin:28px auto 20px;padding:0 20px}
+.hero-card{background:linear-gradient(125deg,#183b56,#276678);color:white;border-radius:26px;padding:30px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-card:after{content:"";position:absolute;width:230px;height:230px;border:28px solid rgba(255,255,255,.07);border-radius:50%;right:-45px;top:-90px}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.76rem;font-weight:700;color:#f6d68f}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:8px 0 10px}
+.hero p{max-width:680px;margin:0;color:#e5f0f1}
+.hero-badge{display:inline-block;margin-top:18px;background:var(--gold);color:#273b48;padding:7px 13px;border-radius:999px;font-weight:800;font-size:.82rem}
+.layout{max-width:1120px;margin:0 auto;padding:0 20px 48px;display:grid;grid-template-columns:245px 1fr;gap:22px;align-items:start}
+.sidebar,.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.sidebar{padding:17px;position:sticky;top:16px}
+.side-title{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;margin:2px 8px 12px}
+.navbtn{width:100%;border:0;background:transparent;color:var(--ink);text-align:left;padding:12px;border-radius:12px;margin:3px 0;font-weight:700;display:flex;gap:10px;align-items:center}
+.navbtn:hover{background:#f1f7f6}
+.navbtn.active{background:#e7f2f1;color:var(--navy)}
+.navnum{width:27px;height:27px;border-radius:9px;background:#edf2f4;display:grid;place-items:center;font-size:.8rem;flex:none}
+.navbtn.active .navnum{background:var(--teal);color:white}
+.scorebox{margin-top:18px;padding:14px;background:var(--cream);border:1px solid #f3e6c6;border-radius:14px}
+.scorebox small{display:block;color:var(--muted);font-weight:700}
+.scoreline{display:flex;align-items:baseline;gap:5px;margin-top:3px}
+.scoreline strong{font-size:1.8rem;color:var(--navy)}
+.progress{height:8px;background:#e6ecec;border-radius:20px;overflow:hidden;margin-top:10px}
+.progress>span{display:block;height:100%;width:0;background:var(--teal);transition:width .25s}
+.main{min-width:0}
+.panel{padding:25px;margin-bottom:18px}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:18px}
+.kicker{color:var(--teal);font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}
+h2{margin:3px 0 4px;color:var(--navy);font-size:1.55rem}
+.lead{margin:0;color:var(--muted)}
+.pill{white-space:nowrap;background:#edf5f4;color:var(--blue);padding:6px 11px;border-radius:999px;font-size:.78rem;font-weight:800}
+.exercise{border:1px solid var(--line);border-radius:15px;padding:16px;margin:13px 0;background:#fff}
+.exercise p{margin:0 0 12px;font-weight:700}
+.qnum{color:var(--teal);font-size:.8rem;font-weight:800;margin-right:6px}
+.options{display:flex;flex-wrap:wrap;gap:9px}
+.option{border:1.5px solid #cbd9dc;background:#f8fbfb;color:var(--navy);padding:8px 15px;border-radius:11px;font-weight:800;min-width:90px}
+.option:hover:not(:disabled){border-color:var(--teal);background:#eff8f6}
+.option.selected{border-color:var(--blue);background:#e8f2f5}
+.option.correct{border-color:var(--good);background:var(--goodbg);color:var(--good)}
+.option.incorrect{border-color:var(--bad);background:var(--badbg);color:var(--bad)}
+.feedback{font-size:.9rem;margin-top:10px;padding:9px 11px;border-radius:10px;display:none}
+.feedback.show{display:block}
+.feedback.good{background:var(--goodbg);color:var(--good)}
+.feedback.bad{background:var(--badbg);color:var(--bad)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.primary,.secondary{border:0;border-radius:12px;padding:11px 17px;font-weight:800}
+.primary{background:var(--navy);color:white}
+.primary:hover{background:#24516d}
+.secondary{background:#edf3f4;color:var(--navy)}
+.secondary:hover{background:#dfeaec}
+button:disabled{cursor:default;opacity:.75}
+.detector-row{display:grid;grid-template-columns:1fr minmax(190px,260px);gap:12px;align-items:center}
+.wrong{cursor:pointer;border-radius:4px;padding:1px 3px;transition:background .15s,color .15s}.wrong.found{background:#ffe3a8;color:#7a4b00}
+.answer-input{width:100%;border:1.5px solid #cbd9dc;border-radius:10px;padding:10px 12px;outline:none}
+.answer-input:focus,select:focus{border-color:var(--teal);box-shadow:0 0 0 3px #dff0ed}
+.answer-input.correct{border-color:var(--good);background:var(--goodbg)}
+.answer-input.incorrect{border-color:var(--bad);background:var(--badbg)}
+.match-row{display:grid;grid-template-columns:minmax(130px,.7fr) 1.5fr;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.match-row:last-child{border-bottom:0}
+.match-form{font-weight:800;color:var(--navy);font-size:1.08rem}
+select{width:100%;padding:10px;border:1.5px solid #cbd9dc;border-radius:10px;background:#fff;color:var(--ink)}
+.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.guide-card{border:1px solid var(--line);border-radius:15px;padding:15px;background:#fff}
+.guide-card h3{margin:0 0 8px;color:var(--navy);font-size:1.05rem}
+.guide-pair{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.guide-form{background:#f4f8f8;padding:10px;border-radius:10px}
+.guide-form strong{color:var(--blue);font-size:1.02rem}
+.guide-form p{margin:4px 0 0;font-size:.9rem}
+.example{margin-top:7px;font-size:.9rem}
+.tip{margin-top:9px;padding:9px 10px;background:var(--cream);border-left:3px solid var(--gold);border-radius:7px;font-size:.88rem}
+.guide-wide{grid-column:1/-1}
+.guide-table{width:100%;border-collapse:collapse;margin-top:8px}
+.guide-table td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top}
+.guide-table td:first-child{font-weight:800;color:var(--blue);white-space:nowrap;width:115px}
+.notice{background:#fff8e8;border:1px solid #f2e2b9;border-radius:13px;padding:13px 15px;margin:14px 0;color:#5c4a24}
+.result{display:none;text-align:center;background:#edf7f3;border:1px solid #cde6d8;border-radius:16px;padding:20px;margin-top:18px}
+.result.show{display:block}
+.result strong{font-size:2rem;color:var(--good)}
+.footer{text-align:center;color:var(--muted);font-size:.8rem;padding:5px 15px 28px}
+.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static}.sidebar nav{display:grid;grid-template-columns:1fr 1fr}.side-title{grid-column:1/-1}.scorebox{margin-top:12px}.guide-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.hero-card{padding:23px}.panel{padding:17px}.panel-head{display:block}.pill{display:inline-block;margin-top:8px}.detector-row{grid-template-columns:1fr}.match-row{grid-template-columns:1fr;gap:6px}.guide-pair{grid-template-columns:1fr 1fr}.sidebar nav{grid-template-columns:1fr 1fr}.top-note{display:none}}
+@media print{
+ body{background:#fff}.topbar,.sidebar,.hero-badge,.actions,.footer{display:none!important}
+ .hero{margin:0 auto 12px}.hero-card{background:#fff!important;color:#000;border:1px solid #aaa;box-shadow:none;padding:14px}
+ .hero p,.eyebrow{color:#333}.layout{display:block;max-width:none;padding:0}.panel{box-shadow:none;border:0;padding:10px;margin:0;break-inside:avoid}
+ .exercise,.guide-card{break-inside:avoid}.main section{display:block!important}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="top-inner"><div class="brand">CRED ÎN <span>EDUCAȚIE</span></div><div class="top-note">Învățăm prin joc. Scriem corect.</div></div></header>
+<section class="hero"><div class="hero-card">
+ <div class="eyebrow">Misiune de limba română · clasa a IV-a</div>
+ <h1>Aventura ortogramelor</h1>
+ <p>Privește cu atenție, citește enunțurile și alege forma potrivită. Fiecare răspuns corect te ajută să devii un detectiv al cuvintelor!</p>
+ <span class="hero-badge">50 de puncte în joc</span>
+</div></section>
+<div class="layout">
+<aside class="sidebar">
+ <div class="side-title">Meniul aventurii</div>
+ <nav>
+  <button class="navbtn active" data-target="choose"><span class="navnum">1</span>Alege ortograma</button>
+  <button class="navbtn" data-target="detect"><span class="navnum">2</span>Detector de greșeli</button>
+  <button class="navbtn" data-target="match"><span class="navnum">3</span>Potrivește</button>
+  <button class="navbtn" data-target="guide"><span class="navnum">4</span>Ghidul ortogramelor</button>
+ </nav>
+ <div class="scorebox"><small>PUNCTAJUL TĂU</small><div class="scoreline"><strong id="score">0</strong><span>/ 50 puncte</span></div><div class="progress"><span id="progress"></span></div><small id="progressText">Începe aventura!</small></div>
+ <div class="actions"><button class="secondary" id="resetAll">Reia aventura</button></div>
+</aside>
+<main class="main">
+<section class="panel page" id="choose">
+ <div class="panel-head"><div><div class="kicker">Misiunea 1</div><h2>Alege ortograma potrivită</h2><p class="lead">Completează fiecare enunț alegând varianta corectă.</p></div><span class="pill">17 exerciții · 17 puncte</span></div>
+ <div id="chooseList"></div>
+ <div class="actions"><button class="primary" id="checkChoose">Verifică răspunsurile</button><button class="secondary" id="clearChoose">Șterge răspunsurile</button></div>
+ <div class="result" id="chooseResult" aria-live="polite"></div>
+</section>
+<section class="panel page hidden" id="detect">
+ <div class="panel-head"><div><div class="kicker">Misiunea 2</div><h2>Detector de greșeli</h2><p class="lead">În fiecare enunț s-a strecurat o greșeală. Identifică forma scrisă greșit, apoi scrie varianta corectă.</p></div><span class="pill">12 exerciții · 24 puncte</span></div>
+ <div class="notice">Dă clic pe cuvântul scris greșit pentru a-l marca, apoi scrie forma corectă în căsuță.</div>
+ <div id="detectList"></div>
+ <div class="actions"><button class="primary" id="checkDetect">Verifică răspunsurile</button><button class="secondary" id="clearDetect">Șterge răspunsurile</button></div>
+ <div class="result" id="detectResult" aria-live="polite"></div>
+</section>
+<section class="panel page hidden" id="match">
+ <div class="panel-head"><div><div class="kicker">Misiunea 3</div><h2>Potrivește forma cu explicația</h2><p class="lead">Alege explicația care se potrivește fiecărei forme.</p></div><span class="pill">9 asocieri · 9 puncte</span></div>
+ <div id="matchList"></div>
+ <div class="actions"><button class="primary" id="checkMatch">Verifică asocierile</button><button class="secondary" id="clearMatch">Șterge răspunsurile</button></div>
+ <div class="result" id="matchResult" aria-live="polite"></div>
+</section>
+<section class="panel page hidden" id="guide">
+ <div class="panel-head"><div><div class="kicker">Ajutor pentru detectivi</div><h2>Ghidul ortogramelor</h2><p class="lead">Citește exemplele și folosește trucurile pentru a alege forma corectă.</p></div><span class="pill">Învață · observă · exersează</span></div>
+ <div class="guide-grid" id="guideContent"></div>
+</section>
+</main>
+</div>
+<div class="footer">CRED ÎN EDUCAȚIE · Material interactiv pentru învățământul primar</div>
+<script>
+const chooseData = [
+ {s:"Mihai __ sunat pe Radu după ore.",o:["l-a","la"],a:"l-a",e:"Scriem «l-a»: forma se poate desface în «pe el a» — pe Radu l-a sunat."},
+ {s:"Copiii merg __ bibliotecă în fiecare joi.",o:["l-a","la"],a:"la",e:"«La» indică locul sau direcția: merg la bibliotecă."},
+ {s:"Preferi mere __ pere?",o:["sau","s-au"],a:"sau",e:"«Sau» se poate înlocui cu «ori»: mere ori pere."},
+ {s:"Elevii __ adunat în curtea școlii.",o:["sau","s-au"],a:"s-au",e:"«S-au» intră în alcătuirea formei verbale «s-au adunat»."},
+ {s:"Andrei __ pregătit ghiozdanul pentru excursie.",o:["s-a","sa"],a:"s-a",e:"«S-a» se folosește în forma verbală «s-a pregătit»."},
+ {s:"Cartea __ este așezată pe birou.",o:["s-a","sa"],a:"sa",e:"«Sa» arată cui îi aparține cartea: cartea lui sau a ei."},
+ {s:"Mama __ oferit Mariei o carte interesantă.",o:["i-a","ia"],a:"i-a",e:"«I-a oferit» arată ce a făcut mama pentru Maria."},
+ {s:"Elena __ o carte de pe raft.",o:["i-a","ia"],a:"ia",e:"«Ia» este o formă a verbului «a lua»: Elena ia o carte."},
+ {s:"Bunica __ pregătit o surpriză pentru noi.",o:["ne-a","nea"],a:"ne-a",e:"«Ne-a pregătit» arată ce a făcut bunica pentru noi."},
+ {s:"Un strat gros de __ acoperă câmpul.",o:["ne-a","nea"],a:"nea",e:"«Nea» este un cuvânt care înseamnă «zăpadă»."},
+ {s:"Noi __ bucurat de excursia la munte.",o:["ne-am","neam"],a:"ne-am",e:"«Ne-am bucurat» este o formă verbală care se referă la noi."},
+ {s:"Bunicul cântă la __ în fiecare seară.",o:["n-ai","nai"],a:"nai",e:"«Nai» este numele unui instrument muzical."},
+ {s:"Învățătoarea __ felicitat pentru rezultate.",o:["v-a","va"],a:"v-a",e:"«V-a felicitat» înseamnă că învățătoarea i-a felicitat pe voi."},
+ {s:"Mâine __ răsări soarele la ora șase.",o:["v-a","va"],a:"va",e:"«Va răsări» arată o acțiune care se va petrece în viitor."},
+ {s:"Am găsit un pui de pasăre __ cuib.",o:["într-un","întrun"],a:"într-un",e:"Forma corectă este «într-un», scrisă cu cratimă."},
+ {s:"De ce __ adus caietul de matematică?",o:["n-ai","nai"],a:"n-ai",e:"«N-ai» se poate înlocui cu «nu ai»."},
+ {s:"Nu înțeleg __ supără pe Vlad.",o:["ce-l","cel"],a:"ce-l",e:"«Ce-l» se poate desface în «ce îl»: nu înțeleg ce îl supără."}
+];
+const detectData = [
+ {before:"Duminică mergem ",wrong:"l-a",after:" bunici.",correct:"la",why:"«La» indică direcția: mergem la bunici."},
+ {before:"Copiii ",wrong:"sau",after:" așezat în semicerc.",correct:"s-au",why:"«S-au așezat» este forma verbală corectă."},
+ {before:"Cartea ",wrong:"s-a",after:" este pe birou.",correct:"sa",why:"«Sa» arată cui îi aparține cartea."},
+ {before:"Andrei ",wrong:"s-a",after:" pregătit ghiozdanul pentru excursie.",correct:"și-a",why:"«Și-a pregătit» este forma corectă; «s-a pregătit» are alt înțeles."},
+ {before:"Bunicul cântă la ",wrong:"n-ai",after:".",correct:"nai",why:"«Nai» este un instrument muzical."},
+ {before:"Am găsit o buburuză ",wrong:"intru-un",after:" ghiveci.",correct:"într-un",why:"Forma corectă este «într-un», cu cratimă."},
+ {before:"Părinții ",wrong:"iau",after:" cumpărat Mariei o bicicletă.",correct:"i-au",why:"«I-au cumpărat» este forma verbală corectă."},
+ {before:"Te rog, ",wrong:"dă mi",after:" creionul albastru!",correct:"dă-mi",why:"Cratima leagă forma verbală «dă» de «mi»."},
+ {before:"Am cumpărat fructe ",wrong:"dintrun",after:" magazin.",correct:"dintr-un",why:"Forma corectă este «dintr-un», cu cratimă."},
+ {before:"Călătorii au trecut ",wrong:"printro",after:" pădure.",correct:"printr-o",why:"Forma corectă este «printr-o», cu cratimă."},
+ {before:"Eu ",wrong:"nul",after:" cunosc pe băiatul acesta.",correct:"nu-l",why:"«Nu-l» se poate desface în «nu îl»."},
+ {before:"",wrong:"Uităte",after:" la curcubeul de pe cer!",correct:"Uită-te",why:"Cratima leagă forma verbală «uită» de «te»."}
+];
+const matchData = [
+ {form:"sau",answer:"Se poate înlocui cu «ori»: mere sau pere."},
+ {form:"s-au",answer:"Intră în alcătuirea unor forme verbale: copiii s-au jucat."},
+ {form:"sa",answer:"Arată cui îi aparține ceva: cartea sa."},
+ {form:"s-a",answer:"Intră în alcătuirea unor forme verbale: Maria s-a trezit."},
+ {form:"n-ai",answer:"Se poate înlocui cu «nu ai»: n-ai venit."},
+ {form:"nea",answer:"Înseamnă «zăpadă»: un strat de nea."},
+ {form:"dă-mi",answer:"Leagă verbul «dă» de cuvântul «mi»: dă-mi caietul."},
+ {form:"într-un",answer:"Se scrie cu cratimă: într-un ghiveci."},
+ {form:"nu-l",answer:"Se poate desface în «nu îl»: nu-l cunosc."}
+];
+const guideCards = [
+ {title:"SAU / S-AU",pairs:[["SAU","Se poate înlocui cu «ori».","Vrei mere sau pere?"],["S-AU","Intră în alcătuirea unei forme verbale.","Copiii s-au jucat în parc."]],tip:"Dacă poți înlocui cu «ori», scrii sau. În «s-au jucat», scrii forma cu cratimă."},
+ {title:"SA / S-A",pairs:[["SA","Arată cui îi aparține un lucru.","Cartea sa este interesantă."],["S-A","Intră în alcătuirea unei forme verbale.","Maria s-a îmbrăcat repede."]],tip:"«Sa» arată apartenența. «S-a» apare în forme precum s-a trezit, s-a bucurat."},
+ {title:"IA / I-A",pairs:[["IA","Este o formă a verbului «a lua».","Elena ia o carte."],["I-A","Intră în alcătuirea unei forme verbale.","Mama i-a oferit Mariei o carte."]],tip:"Dacă sensul este «a lua», scrii ia. În «i-a oferit», forma se scrie cu cratimă."},
+ {title:"LA / L-A",pairs:[["LA","Arată locul sau direcția.","Mergem la bibliotecă."],["L-A","Se poate desface în «pe el a».","Profesorul l-a felicitat pe Radu."]],tip:"«La» indică locul sau direcția. În «l-a felicitat», scriem cu cratimă."},
+ {title:"NE-A / NEA",pairs:[["NE-A","Intră în alcătuirea unei forme verbale.","Bunica ne-a pregătit o prăjitură."],["NEA","Poate însemna «zăpadă»; se folosește și în adresare familiară.","Un strat de nea / Nea Vasile."]],tip:"În «ne-a pregătit», cratima leagă două cuvinte. «Nea» se scrie fără cratimă."},
+ {title:"NE-AM / NEAM",pairs:[["NE-AM","Intră în alcătuirea unei forme verbale.","Noi ne-am bucurat."],["NEAM","Înseamnă familie, rude sau popor.","Un neam cu tradiții frumoase."]],tip:"Dacă este vorba despre o acțiune, verifică forma ne-am. Pentru familie sau popor, scrii neam."},
+ {title:"V-A / VA",pairs:[["V-A","Se folosește când acțiunea este îndreptată către voi.","Învățătoarea v-a felicitat."],["VA","Ajută la formarea unei forme verbale care arată viitorul.","Mâine va răsări soarele."]],tip:"«V-a felicitat» se referă la voi. «Va pleca» arată ce se va întâmpla."},
+ {title:"N-AI / NAI",pairs:[["N-AI","Se poate înlocui cu «nu ai».","N-ai venit la antrenament."],["NAI","Este numele unui instrument muzical.","Bunicul cântă la nai."]],tip:"Dacă poți spune «nu ai», scrii n-ai."},
+ {title:"CE-L / CEL",pairs:[["CE-L","Se poate desface în «ce îl».","Nu știu ce-l supără pe Vlad."],["CEL","Apare în construcții precum «cel mai bun» sau «cel care».","El este cel mai harnic."]],tip:"Dacă poți înlocui cu «ce îl», scrii ce-l. În «cel mai bun», scrii cel."}
+];
+const guideExtra = [
+ {title:"Cuvinte care se scriu cu cratimă",wide:true,table:[
+ ["într-un","Am găsit o floare într-un ghiveci."],["într-o","Am plecat într-o excursie."],
+ ["dintr-un","A ieșit dintr-un magazin."],["dintr-o","A cules o floare dintr-o grădină."],
+ ["printr-un","Am trecut printr-un tunel."],["printr-o","Am trecut printr-o poiană."]
+ ],tip:"Reține forma corectă de scriere: într-un, într-o, dintr-un, dintr-o, printr-un, printr-o."},
+ {title:"Cratima în forme precum dă-mi, uită-te, nu-l",wide:true,table:[
+ ["dă-mi","Dă-mi caietul, te rog!"],["spune-i","Spune-i colegului adevărul."],["ajută-mă","Ajută-mă să rezolv problema."],
+ ["du-te","Du-te și adu cartea."],["uită-te","Uită-te la cer!"],["nu-l","Eu nu-l văd pe Radu."],["să-l","Vreau să-l ajut pe colegul meu."]
+ ],tip:"Cratima poate lega un verb de un cuvânt scurt care îl însoțește. Nu toate aceste forme exprimă un îndemn."}
+];
+let chooseRound=[];
+let scores={choose:0,detect:0,match:0};
+let completed={choose:false,detect:false,match:false};
+const $=id=>document.getElementById(id);
+function esc(s){return s.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;")}
+function makeChooseRound(){
+ const remaining=chooseData.map(q=>({...q}));
+ const round=[];
+ while(remaining.length){
+  const available=remaining.map((q,i)=>({q,i})).filter(x=>!round.length||x.q.a!==round[round.length-1].a);
+  const pool=available.length?available:remaining.map((q,i)=>({q,i}));
+  const pick=pool[Math.floor(Math.random()*pool.length)];
+  round.push(pick.q);remaining.splice(pick.i,1);
+ }
+ return round;
+}
+function renderChoose(){
+ chooseRound=makeChooseRound();
+ $("chooseList").innerHTML=chooseRound.map((q,i)=>`<div class="exercise" data-q="${i}"><p><span class="qnum">${i+1}.</span>${esc(q.s)}</p><div class="options">${q.o.map(v=>`<button class="option" type="button" data-value="${esc(v)}">${esc(v)}</button>`).join("")}</div><div class="feedback" id="cf${i}"></div></div>`).join("");
+ $("chooseList").querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>{if(completed.choose)return;const box=b.closest(".exercise");box.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");}));
+}
+function renderDetect(){
+ $("detectList").innerHTML=detectData.map((q,i)=>`<div class="exercise"><p><span class="qnum">${i+1}.</span>${esc(q.before)}<strong class="wrong" role="button" tabindex="0" aria-label="Marchează forma scrisă greșit: ${esc(q.wrong)}" data-detect="${i}">${esc(q.wrong)}</strong>${esc(q.after)}</p><div class="detector-row"><input class="answer-input" id="di${i}" aria-label="Forma corectă pentru exercițiul ${i+1}" placeholder="Scrie forma corectă"></div><div class="feedback" id="df${i}"></div></div>`).join("");
+ $("detectList").querySelectorAll(".wrong").forEach(word=>{
+  const mark=()=>{if(!completed.detect)word.classList.toggle("found");};
+  word.addEventListener("click",mark);
+  word.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();mark();}});
+ });
+}
+function renderMatch(){
+ const options=matchData.map(x=>x.answer).sort(()=>0.5-Math.random());
+ $("matchList").innerHTML=matchData.map((q,i)=>`<div class="match-row"><div class="match-form">${esc(q.form)}</div><select id="mi${i}" aria-label="Explicația pentru ${esc(q.form)}"><option value="">Alege explicația…</option>${options.map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join("")}</select></div>`).join("");
+}
+function renderGuide(){
+ $("guideContent").innerHTML=guideCards.map(c=>`<article class="guide-card"><h3>${c.title}</h3><div class="guide-pair">${c.pairs.map(p=>`<div class="guide-form"><strong>${p[0]}</strong><p>${p[1]}</p><div class="example">${p[2]}</div></div>`).join("")}</div><div class="tip">${c.tip}</div></article>`).join("")+
+ guideExtra.map(c=>`<article class="guide-card guide-wide"><h3>${c.title}</h3><table class="guide-table">${c.table.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></article>`).join("");
+}
+function updateScore(){
+ const total=scores.choose+scores.detect+scores.match;$("score").textContent=total;$("progress").style.width=(total/50*100)+"%";
+ $("progressText").textContent=total===0?"Începe aventura!":total===50?"Felicitări! Ai obținut punctajul maxim!":`Ai acumulat ${total} din 50 de puncte.`;
+}
+function showResult(id,score,max,msg){const el=$(id);el.classList.add("show");el.innerHTML=`<strong>${score} / ${max} puncte</strong><div>${msg}</div>`;}
+function checkChoose(){
+ if(completed.choose)return;let score=0;
+ chooseRound.forEach((q,i)=>{const box=$("chooseList").children[i],sel=box.querySelector(".option.selected"),fb=$("cf"+i);
+ box.querySelectorAll(".option").forEach(b=>{b.disabled=true;if(b.dataset.value===q.a)b.classList.add("correct");else if(b===sel)b.classList.add("incorrect")});
+ if(sel&&sel.dataset.value===q.a)score++;
+ fb.className="feedback show "+(sel&&sel.dataset.value===q.a?"good":"bad");fb.textContent=(sel&&sel.dataset.value===q.a?"Corect! ":"Răspunsul corect este «"+q.a+"». ")+q.e;
+ });
+ scores.choose=score;completed.choose=true;updateScore();showResult("chooseResult",score,17,"Ai încheiat prima misiune.");
+}
+function normalize(s){return s.trim().toLocaleLowerCase("ro").replace(/[.!?]+$/g,"").replace(/\s+/g," ")}
+function checkDetect(){
+ if(completed.detect)return;let score=0;
+ detectData.forEach((q,i)=>{const word=$("detectList").querySelector(`[data-detect="${i}"]`),input=$("di"+i),value=normalize(input.value),fb=$("df"+i);
+ const identified=word.classList.contains("found"),correct=value===normalize(q.correct);
+ if(identified)score++;if(correct)score+=1;
+ word.setAttribute("aria-disabled","true");input.disabled=true;
+ input.classList.add(correct?"correct":"incorrect");
+ fb.className="feedback show "+(identified&&correct?"good":"bad");
+ fb.textContent=(identified?"Ai identificat forma scrisă greșit. ":"Nu ai marcat forma scrisă greșit. ")+(correct?"Ai scris corect varianta. ":"Varianta corectă este «"+q.correct+"». ")+q.why;
+ });
+ scores.detect=score;completed.detect=true;updateScore();showResult("detectResult",score,24,"Primești câte un punct pentru identificare și pentru scrierea corectă.");
+}
+function checkMatch(){
+ if(completed.match)return;let score=0;
+ matchData.forEach((q,i)=>{const s=$("mi"+i),ok=s.value===q.answer;if(ok)score++;s.disabled=true;s.style.borderColor=ok?"var(--good)":"var(--bad)";});
+ scores.match=score;completed.match=true;updateScore();showResult("matchResult",score,9,"Ai încheiat misiunea de potrivire.");
+}
+function clearChoose(){completed.choose=false;scores.choose=0;$("chooseResult").classList.remove("show");renderChoose();updateScore()}
+function clearDetect(){completed.detect=false;scores.detect=0;$("detectResult").classList.remove("show");renderDetect();updateScore()}
+function clearMatch(){completed.match=false;scores.match=0;$("matchResult").classList.remove("show");renderMatch();updateScore()}
+$("checkChoose").addEventListener("click",checkChoose);$("checkDetect").addEventListener("click",checkDetect);$("checkMatch").addEventListener("click",checkMatch);
+$("clearChoose").addEventListener("click",clearChoose);$("clearDetect").addEventListener("click",clearDetect);$("clearMatch").addEventListener("click",clearMatch);
+$("resetAll").addEventListener("click",()=>{clearChoose();clearDetect();clearMatch();showPage("choose")});
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("hidden",p.id!==id));document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.target===id));window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.target)));
+renderChoose();renderDetect();renderMatch();renderGuide();updateScore();
+</script>
+</body>
+</html>
